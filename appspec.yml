@@ -1,0 +1,20 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html/prod/frontend/madhi-frontend-web/
+    overwrite: true
+file_exists_behavior: OVERWRITE
+hooks:
+  BeforeInstall:
+    - location: scripts/beforeinstall.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: scripts/afterinstall.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: scripts/applicationstart.sh
+      timeout: 300
+      runas: root
